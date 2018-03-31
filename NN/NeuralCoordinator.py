@@ -61,10 +61,10 @@ class NeuralCoordinator(object):
 		test_hashes = self.m_params.computeHashes(test_data)
 		print("Finished Precomputing Testing Hashes")
 
-		data_idx = self.initIndices(labels.shape[0])
+		data_idx = self.initIndices(len(labels))
 		m_examples_per_thread = data.shape[0] / (Util.UPDATE_SIZE * Util.LAYER_THREADS)
 
-		assert len(data_idx) == labels.shape[0]
+		assert len(data_idx) == len(labels)
 
 		train_writer = open(self.m_train_path)
 		test_writer = open(self.m_test_path)
